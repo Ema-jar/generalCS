@@ -4,7 +4,7 @@ Uso questo spazio per fissare alcuni topic particolamente importanti che, a mio 
 devono essere tenuti a mente e rinfrescati di continuo.
 
 Gli argomenti spaziano dai linguaggi di programmazione ai design pattern passando per metodologie di sviluppo,
-architetture, definizioni ecc ecc.
+architetture, sistemi operativi, basi di dati ecc ecc.
 
 Non sono incluse domande riguardanti il mondo degli algoritmi.
 

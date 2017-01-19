@@ -7,6 +7,8 @@ Alla base di REST c'è l'idea secondo cui ogni componente è una risorsa accedut
 standard dell'HTTP.
 Ogni risorsa è identificata da un URI (Uniform Resource Identifier) ed è rappresentata usando 
 diversi formati come JSON o XML.
+È importante sottolineare che REST non è un protocollo ma uno stile architetturale, questa 
+è una delle prime differenze rispetto a SOAP.
 
 ### Metodi
 I metodi alla base di REST sono i seguenti:
@@ -17,8 +19,8 @@ I metodi alla base di REST sono i seguenti:
 * POST − permette di creare o aggiornar euna nuova risorsa.
 * OPTIONS − fornisce operazioni di supporto su quella risorsa.
 
-GET è un'operazione definita sicura perché non modifica la risorsa verso la quale viene fatta.
-PUT e DELETE sono operazioni dette idempotenti. Questo significa che il risultato è lo stesso
+GET è un'operazione definita _sicura_ perché non modifica la risorsa verso la quale viene eseguita.
+PUT e DELETE sono operazioni dette _idempotenti_. Questo significa che il risultato è lo stesso
 indipendentemente dal numero richieste fatte verso la risorsa.
 Se proviamo a usare PUT due volte su uno stesso oggetto la seconda volta questo non ha effetto.
 Se proviamo ad effettuare una DELETE molteplici volte sulla stessa risorsa questa viene cancellata
