@@ -9,3 +9,4 @@ architetture, sistemi operativi, basi di dati ecc ecc.
 Non sono incluse domande riguardanti il mondo degli algoritmi.
 
 * [Architetture REST](https://github.com/Ema-jar/generalCSQuestions/blob/master/rest.md)
+* [Java](https://github.com/Ema-jar/generalCSQuestions/blob/master/java.md)
