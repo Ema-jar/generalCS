@@ -1,6 +1,4 @@
-# Domande generiche per colloqui
-
-## Rest
+# Rest
 
 ### Definizione
 REST (REpresentational State Transfer) è un tipo di architettura software che usa il protocollo 
