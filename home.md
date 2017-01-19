@@ -19,6 +19,28 @@ I metodi alla base di REST sono i seguenti:
 * POST − permette di creare o aggiornar euna nuova risorsa.
 * OPTIONS − fornisce operazioni di supporto su quella risorsa.
 
+GET è un'operazione definita sicura perché non modifica la risorsa verso la quale viene fatta.
+PUT e DELETE sono operazioni dette idempotenti. Questo significa che il risultato è lo stesso
+indipendentemente dal numero richieste fatte verso la risorsa.
+Se proviamo a usare PUT due volte su uno stesso oggetto la seconda volta questo non ha effetto.
+Se proviamo ad effettuare una DELETE molteplici volte sulla stessa risorsa questa viene cancellata
+quindi le successive richieste non avranno effetto.
+
+Per comprendere meglio il concetto di sicurezza ed idempotenza pensiamo all'operazione matematica
+moltiplicazione.
+La moltiplicazione per 1 è sicura e idempotente:
+
+4 x 1 x 1 x 1 = 1
+
+Notiamo che il numero non viene cambiato indipendentemente dal numero di moltiplicazioni
+fatte (sicurezza). L'operazione inoltre non modifica il valore del numero (idempotenza).
+Volendo moltiplicare invece per 0 otterremo un'operazione idempotente ma non sicura:
+
+4 x 0 x 0 x 0 = 0
+
+Notiamo che alla prima applicazione il risultato diventa uguale a zero e questo non cambia 
+indipendentemente dal numero di volte in cui la moltiplicazione viene applicata.
+
 ### Web Services
 I web services sono sistemi software basati su tecnologie open utilizzati principalmente
 per scambiare dati tra applicazioni differenti.
