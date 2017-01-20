@@ -58,7 +58,7 @@ Persona p = new Persona();
 
 Dietro questa, apparentemente, semplice operazione si nascondono tre diverse azioni estremamente importanti:
 
-1. Creazione dell'oggetto Persona all'interno dell'heap
+1. Creazione dell'oggetto Persona all'interno dell'heap tramite la parola chiave `new`
 2. Creazione del riferimento ad un oggetto di tipo Persona
 3. Unione del riferimento all'oggeto utilizzando l'operatore di uguaglianza `=`
 
@@ -67,6 +67,30 @@ fintanto che esisterà un riferimento verso di esso. Quando non ci sarà più ne
 a questa istanza allora il garbage collector potrà eliminarlo.
 
 ### Modificatori
+
+In Java classi, variabili e metodi possono essere dotati di modificatori d'accesso:
+
+* public
+* protected
+* package
+* private 
+
+Queste parole chiavi vengono utilizzate per definire lo scope dell'elemento a cui fanno riferimento.
+Public indica che l'elemento è accessibile pubblicamente, ovunque all'interno del programma.
+Private significa che l'elemento è accessibile solo all'interno di una classe.
+Protected permette l'accesso dell'elemento solo da parte delle sottoclassi, indipendentemente dal package 
+di appartenenza.
+Package indica che l'elemento è accessibile all'interno di un dato package.
+La seguente tabella è da tenere a mente:
+
+ Modifier | Class | Package            | Subclass                | World
+|-------- | ----- | ------------------ | ----------------------- | -----
+public    |  yes  |        yes         |           yes           |  yes 
+protected |  yes  |        yes         |           yes           |  no 
+package   |  yes  |        yes         |           no            |  no 
+private   |  yes  |        no          |           no            |  no 
+
+ 
 
 
 
