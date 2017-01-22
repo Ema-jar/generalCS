@@ -90,6 +90,44 @@ protected |  yes  |        yes         |           yes           |  no
 package   |  yes  |        yes         |           no            |  no 
 private   |  yes  |        no          |           no            |  no 
 
+
+### Final & Static
+
+Oltre ai modificatori precedentemente descritti, variabili, metodi e classi possono essere 
+definiti usando le parole chiave `final` oppure `static`.
+
+Una variabile definita come final è una variabile che, una volta inizializzata, non potrà
+più cambiare valore.
+Quindi il seguente codice genera un errore al momento della compilazione perché si sta provando a settare
+il valore della variabile `name` definita come final e già inizializzata.
+
+```
+public class Persona{
+
+	private String name = "Emanuele";
+	
+	public void setName(String newName){
+		this.name = newName;
+	}
+}
+```
+
+Un metodo final è un metodo che non può essere ridefinito da una sottoclasse.
+
+Una classe final è una classe che non può essere estesa da nessuna altra classe. `java.lang.String`
+è un esempio di classe final, infatti in Java il seguente codice genera un errore al momento
+della compilazione.
+
+```
+public class customString extends String{
+	//do something
+}
+```
+
+
+
+
+
  
 
 
