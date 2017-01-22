@@ -128,9 +128,14 @@ Anche `static` è una parola chiave utilizzata nel mondo Java in associazione co
 metodo.
 
 Una variabile statica è una variabile che appartiene alla classe e non all'oggetto. Questo significa che
-tutti gli oggetti instanziati basandosi su quella classe faranno riferimento a tale variabile.
+tutti gli oggetti instanziati da quella classe faranno riferimento a questa variabile condividendola.
 Questa è la principale differenza tra variabili statiche e variabili d'istanza: abbiamo una variabile statica
 _per ogni classe_ mentre abbiamo una variabile d'istanza _per ogni oggetto_ di quella classe.
+Le variabili statiche sono inizializzate quando la classe è caricata.
+
+> Una classe viene caricata quando la JVM decide che è arrivato il momento di caricarla, genericamente
+> questo accade quando qualcuno prova a creare una nuova istanza della classe oppure quando ne
+> viene utilizzato un metodo statico.
 
 Un metodo statico è un metodo il cui comportamento non dipende da una specifica istanza di una classe. 
 Pensiamo ad esempio al metodo `sqrt(double d)` della classe `Math`. Questo metodno eleva al quadrato un valore 
