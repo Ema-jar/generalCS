@@ -136,6 +136,32 @@ passato come input e, per effettuare questa operazione, non ha bisogno di nessun
 della classe Math, il metodo agisce solo sull'argomento.
 Se per effettuare un'operazione del genere avessimo bisogno in istanziare ogni volta un oggetto della 
 classe Math, questo ci porterebbe ad avere moltissimi oggetti inutili nel nostro heap.
+Java previene questo inutile spreco di spazio utilizzando metodi statici. Un metodo può essere utilizzato
+senza che ci sia bisogno di un effettivo oggetto, con un conseguente risparmio di memoria.
+Solitamente i metodi static vengono utilizzati per fornire delle funzionalità generiche come, appunto, 
+quelle fornite dalla classe Math.
+
+Per invocare un metodo statico bisogna specificare a quale classe è associato tale metodo con la seguente
+sintassi:
+
+`Math.sqrt(12.3)`
+
+Ovviamente all'interno di un metodo statico non si possono utilizzare variabili appartenenti alla classe
+che contiene il metodo. Questo perchè, come detto prima, un metodo statico è accessibile senza che ci sia
+un oggetto nell'heap. Il seguente codice quindi genera un errore in fase di compilazione.
+
+```
+public class Person{
+	private String name;
+
+	public static void printName(){
+		System.out.println("The name is: " + name);
+	}
+}
+```
+
+Il metodo printName è usato chiamando una _classe_ e non un _riferimento_ ad uno specifico oggetto. Quindi
+il metodo statico non sa _quale_ variabile d'istanza utilizzare per ottenere il valore di `name`.
 
 
 
