@@ -124,7 +124,18 @@ public class customString extends String{
 }
 ```
 
+Anche `static` è una parola chiave utilizzata nel mondo Java in associazione con una variabile, un 
+metodo o una classe.
 
+Una variabile statica è una variabile che appartiene alla classe e non all'oggetto. Questo significa che
+tutti gli oggetti instanziati basandosi su quella classe avranno accesso a tale variabile.
+
+Un metodo statico è un metodo il cui comportamento non dipende da una specifica istanza di una classe. 
+Pensiamo ad esempio al metodo `sqrt(double d)` della classe `Math`. Questo metodno eleva al quadrato un valore 
+passato come input e, per effettuare questa operazione, non ha bisogno di nessuna variabile di istanza
+della classe Math, il metodo agisce solo sull'argomento.
+Se per effettuare un'operazione del genere avessimo bisogno in istanziare ogni volta un oggetto della 
+classe Math, questo ci porterebbe ad avere moltissimi oggetti inutili nel nostro heap.
 
 
 
