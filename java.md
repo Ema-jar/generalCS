@@ -167,7 +167,7 @@ public class Person{
 }
 ```
 
-Il metodo printName è usato chiamandolo su una _classe_ e non su un _riferimento_ ad uno specifico oggetto. 
+Il metodo `printName()` è usato chiamandolo su una _classe_ e non su un _riferimento_ ad uno specifico oggetto. 
 Quindi il metodo statico non sa _quale_ variabile d'istanza utilizzare per ottenere il valore di `name`.
 Stesso identico discorso per i metodi: un metodo statico non può richiamare al suo interno un metodo _non_
 statico.
