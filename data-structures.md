@@ -29,3 +29,13 @@ Nel mondo Java `List` è un'interfaccia che estende `Collection`.
 
 > Esempi di List sono gli ArrayList e le LinkedList.
 
+Le *Map* sono delle strutture dati che differiscono da quelle precedentemente descritte. La principale
+differenza sta nel fatto che le mappe contengono coppie chiave-valore e non singoli oggetti.
+All'interno di una mappa le chiavi non possono essere duplicate, inoltre questa struttura non 
+mantiene un ordinamento interno, quindi non è possibile accedere agli elementi in maniera posizionale come
+per le liste.
+Un altro aspetto caratteristico delle mappe è che, nel mondo Java, `Map` è un'interfaccia che
+non implementa `Collection`, quindi le mappe non sono parte della _Collection API_.
+
+> Esempi di Map sono le HashMap e i TreeMap.
+
