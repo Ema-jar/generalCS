@@ -39,3 +39,16 @@ non implementa `Collection`, quindi le mappe non sono parte della _Collection AP
 
 > Esempi di Map sono le HashMap e i TreeMap.
 
+La scelta di una struttura dati rispetto ad un'altra dipende da molti fattori, come ad esempio:
+
+* la velocità di inserimento
+* la velocità di ricerca
+* la velocità di rimozione
+
+Un altro aspetto da considerare nello scegliere una struttura è l'utilizzo che se ne dovrà fare.
+Se volessimo raggruppare una lista di colori un set sarebbe una scelta perfetta poichè non ammette
+duplicati. 
+Se volessimo creare una rubrica telefonica le coppie (nome, numero di telefono) sarebbero perfettamente
+rappresentate da un'hash map.
+
+### LinkedList vs ArrayList
