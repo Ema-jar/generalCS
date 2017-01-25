@@ -3,7 +3,7 @@
 In questa sezione verranno descritte le più comuni strutture dati utilizzabili, sottolineando i tempi
 di inserimento, rimozione e modifica.
 
-### Set, list and map
+## Set, list and map
 
 Tra le strutture dati più comuni vale la penadistinguere tre macrocategorie:
 
@@ -52,7 +52,7 @@ duplicati.
 Se volessimo creare una rubrica telefonica le coppie (nome, numero di telefono) sarebbero perfettamente
 rappresentate da un'hash map.
 
-### LinkedList vs ArrayList
+## LinkedList vs ArrayList
 
 `ArrayList` e `LinkedList` sono due implementazioni differenti della stessa interfaccia `List`: una LinkedList 
 è implementata come una lista di oggetti, ognuno avente un riferimento al successivo e uno al 
@@ -79,7 +79,7 @@ Un'ArrayList risulta essere la scelta migliore quando il quantitativo di dati in
 cambia di frequente e, soprattutto, quando abbiamo bisogno di accedere ad alcuni valori in base alla loro
 posizione.
 
-### HashMap 
+## HashMap 
 
 Un'HashMap è essenzialmente formata da un array di riferimenti che puntano ognuno ad una LinkedList. I 
 riferimenti sono le chiavi mentre le liste sono i possibili valori associati ad ogni chiave.
@@ -102,3 +102,5 @@ Una buona funzione di hash tende a generare poche collisioni ma queste sono comu
 in cui una collisione si verifichi bisognerà scansire la lista associata alla chiave e recuperare l'oggetto
 richiesto, proprio per questo il tempo di estrazione di un'hash map dipende moltissimo dalla funzione
 di hashing.
+
+## HashSet

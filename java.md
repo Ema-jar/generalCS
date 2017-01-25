@@ -1,6 +1,6 @@
 # Java
 
-### JVM
+## JVM
 La Java Virtual Machine è il componente della piattaforma Java che esegue i programmi
 tradotti in bytecode durante la fase di compilazione.
 
@@ -18,7 +18,7 @@ bytecode può essere eseguito usando una qualsiasi macchina virtuale.
 Quindi la JVM sta alla base della portabilità del linguaggio Java, un software scritto in Java
 può essere eseguito su qualsiasi macchina, a patto di avere una JVM compatibile con quella macchina.
 
-### Classi e oggetti
+## Classi e oggetti
 Java è un linguaggio di programmazione a oggetti quindi i vari concetti espressi all'interno del
 software sono mappati in oggetti in grado di interagire tra loro.
 
@@ -66,7 +66,7 @@ Da questo momento l'oggetto esiste nell'heap e rimarrà presente in questo spazi
 fintanto che esisterà un riferimento verso di esso. Quando non ci sarà più nessun riferimento associato
 a questa istanza allora il garbage collector potrà eliminarlo.
 
-### Modificatori
+## Modificatori
 
 In Java classi, variabili e metodi possono essere dotati di modificatori d'accesso:
 
@@ -91,7 +91,7 @@ package   |  yes  |        yes         |           no            |  no
 private   |  yes  |        no          |           no            |  no 
 
 
-### Final & Static
+## Final & Static
 
 Oltre ai modificatori precedentemente descritti, variabili, metodi e classi possono essere 
 definiti usando le parole chiave `final` oppure `static`.

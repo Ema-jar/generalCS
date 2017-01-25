@@ -1,6 +1,6 @@
 # Rest
 
-### Definizione
+## Definizione
 REST (REpresentational State Transfer) è un tipo di architettura software che usa il protocollo 
 HTTP per la comunicazione.
 Alla base di REST c'è l'idea secondo cui ogni componente è una risorsa acceduta usando metodi
@@ -10,7 +10,7 @@ diversi formati come JSON o XML.
 È importante sottolineare che REST non è un protocollo ma uno stile architetturale, questa 
 è una delle prime differenze rispetto a SOAP.
 
-### Metodi
+## Metodi
 I metodi alla base di REST sono i seguenti:
 
 * GET − fornisce accesso in sola lettura ad una risorsa.
@@ -41,14 +41,14 @@ Volendo moltiplicare invece per 0 otterremo un'operazione idempotente ma non sic
 Notiamo che alla prima applicazione il risultato diventa uguale a zero e questo non cambia 
 indipendentemente dal numero di volte in cui la moltiplicazione viene applicata.
 
-### Web Services
+## Web Services
 I web services sono sistemi software basati su tecnologie open utilizzati principalmente
 per scambiare dati tra applicazioni differenti.
 In questo modo diverse applicazioni, scritte in linguaggi diversi, possono comunicare tra 
 loro e scambiarsi dati.
 I web services possono essere progettati utilizzando uno stile architetturale di tipo REST.
 
-### Risorse
+## Risorse
 In REST una risorsa è qualcosa abbastanza importante da essere referenziato da un link o su
 cui si possono eseguire delle azioni.
 Genericamente una risorsa è qualcosa che può essere salvato e collezionato in uno stream di bit
@@ -63,7 +63,7 @@ Un'aspetto importante legato ad una risorsa è il suo URI. Una risorsa deve aver
 un URI. Una risorsa a cui non è associato almeno un URI non è una risorsa e, in genere,
 non è nemmeno sul web.
 
-### URI
+## URI
 L'acronimo URI sta per Uniform Resource Identifier.
 Come detto precedentemente un URI identifica una risorsa sul web. E ogni risorsa, per essere
 considerata tale, deve avere almeno un URI che la identifica.
