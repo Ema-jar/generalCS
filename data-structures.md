@@ -72,8 +72,29 @@ utilizzando semplicemente l'indice dell'elemento, come per un array.
 
 In genere possiamo dire che vale la pena utilizzare una LinkedList quando vogliamo una struttura dati dinamica, 
 capace di performare bene a fronte di molti inserimenti e rimozioni, il metodo `add(E elem)` infatti viene 
-eseguito in tempo costante grazie ad un puntatore sulla coda.
+eseguito in tempo costante grazie ad un puntatore sulla coda. D'altro canto una LinkedList occupa più 
+spazio poichè ogni elemento deve memorizzare anche un riferimento al successivo e uno al precedente.
 
 Un'ArrayList risulta essere la scelta migliore quando il quantitativo di dati inseriti nella struttura non
 cambia di frequente e, soprattutto, quando abbiamo bisogno di accedere ad alcuni valori in base alla loro
 posizione.
+
+### HashMap 
+
+Un'HashMap è essenzialmente formata da un array di riferimenti che puntano ognuno ad una LinkedList. I 
+riferimenti sono le chiavi mentre le liste sono i possibili valori associati ad ogni chiave.
+
+Ogni oggetto contenuto nelle liste ha un codice associato, chiamato `hashCode()` solitamente ricavato in 
+base alle proprietà di tale oggetto, quindi oggetti uguali dovrebbero ritornare codici hash uguali.
+Questo codice è estremamente importante perchè è utilizzato dalla funzione di hash della tabella per 
+decidere la posizione in cui inserire l'oggetto.
+
+Il procedimento è questo:
+
+1. si estrate il codice hash dall'oggetto.
+2. questo codice viene dato in pasto ad una funzione di hash.
+3. la funzione di hash restituisce una posizione che indica la chiave associata a quell'oggetto.
+4. l'oggetto viene inserito nella lista associata a quella chiave.
+
+Ovviamente può capitare che la funzione di hash restituisca lo stesso valore per oggetti differenti, 
+in questo caso si ha una *collisione*.
