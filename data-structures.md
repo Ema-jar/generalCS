@@ -69,3 +69,11 @@ Inserire un elemento provoca lo shift di tutti i seguenti, questo ha un costo di
 cui l'elemento sia inserito in prima posizione.
 D'altro canto è possibile estrarre un'elemento contenuto in una specifica posizione in tempo costante 
 utilizzando semplicemente l'indice dell'elemento, come per un array.
+
+In genere possiamo dire che vale la pena utilizzare una LinkedList quando vogliamo una struttura dati dinamica, 
+capace di performare bene a fronte di molti inserimenti e rimozioni, il metodo `add(E elem)` infatti viene 
+eseguito in tempo costante grazie ad un puntatore sulla coda.
+
+Un'ArrayList risulta essere la scelta migliore quando il quantitativo di dati inseriti nella struttura non
+cambia di frequente e, soprattutto, quando abbiamo bisogno di accedere ad alcuni valori in base alla loro
+posizione.
