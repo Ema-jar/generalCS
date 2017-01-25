@@ -4,6 +4,7 @@ In questa sezione verranno descritte le più comuni strutture dati utilizzabili,
 di inserimento, rimozione e modifica.
 
 ### Set, list and map
+
 Tra le strutture dati più comuni vale la penadistinguere tre macrocategorie:
 
 * i set
@@ -52,3 +53,19 @@ Se volessimo creare una rubrica telefonica le coppie (nome, numero di telefono) 
 rappresentate da un'hash map.
 
 ### LinkedList vs ArrayList
+
+`ArrayList` e `LinkedList` sono due implementazioni differenti della stessa interfaccia `List`: una LinkedList 
+è implementata come una lista di oggetti, ognuno avente un riferimento al successivo e uno al 
+precedente, un'ArrayList è invece implementato su un array.
+
+Un elemento in una LinkedList non può essere indirizzato in tempo costante poichè una lista del genere non è
+posizionale. Ne consegue che l'inserimento o la rimozione hanno un tempo di esecuzione di O(n) nel caso
+peggiore.
+L'inserimento in prima posizione è invece molto vantaggioso e può essere eseguito in tempo costante.
+
+Discorso differente per un'ArrayList, questa struttura è basata su un array, quindi le operazioni su di essa
+rispettano le stesse regole.
+Inserire un elemento provoca lo shift di tutti i seguenti, questo ha un costo di O(n) nel caso in 
+cui l'elemento sia inserito in prima posizione.
+D'altro canto è possibile estrarre un'elemento contenuto in una specifica posizione in tempo costante 
+utilizzando semplicemente l'indice dell'elemento, come per un array.
