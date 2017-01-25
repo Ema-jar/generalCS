@@ -98,3 +98,7 @@ Il procedimento è questo:
 
 Ovviamente può capitare che la funzione di hash restituisca lo stesso valore per oggetti differenti, 
 in questo caso si ha una *collisione*.
+Una buona funzione di hash tende a generare poche collisioni ma queste sono comunque inevitabili. Nel caso
+in cui una collisione si verifichi bisognerà scansire la lista associata alla chiave e recuperare l'oggetto
+richiesto, proprio per questo il tempo di estrazione di un'hash map dipende moltissimo dalla funzione
+di hashing.
