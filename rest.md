@@ -69,7 +69,7 @@ Come detto precedentemente un URI identifica una risorsa sul web. E ogni risorsa
 considerata tale, deve avere almeno un URI che la identifica.
 Nell'identificare una risorsa, un URI deve seguire delle regole.
 
-#### Descrizione
+La prima regola da seguire riguarda la descrizione delle risorse.
 Gli uri devono descrivere la risorsa a cui si vuole accedere.
 * http://www.example.com/sales/2004/Q4
 * http://www.example.com/software/releases/latest.tar.gz

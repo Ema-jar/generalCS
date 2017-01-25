@@ -22,7 +22,6 @@ All'interno del mondo Java `Set` è un'interfaccia che estende `Collection`.
 
 > Esempi di Set sono i TreeSet e gli HashSet.
 
-
 Le *List* vengono utilizzate per rappresentare una sequenza di elementi (duplicati o no) che seguono 
 un dato ordine. Uno dei vantaggi delle liste sta nella possiblità di accedere agli elementi in maniera 
 posizionale, questa caratteristica è data proprio dall'ordinamento interno della lista.
@@ -100,7 +99,28 @@ Ovviamente può capitare che la funzione di hash restituisca lo stesso valore pe
 in questo caso si ha una *collisione*.
 Una buona funzione di hash tende a generare poche collisioni ma queste sono comunque inevitabili. Nel caso
 in cui una collisione si verifichi bisognerà scansire la lista associata alla chiave e recuperare l'oggetto
-richiesto, proprio per questo il tempo di estrazione di un'hash map dipende moltissimo dalla funzione
-di hashing.
+richiesto, proprio per questo il tempo di estrazione di un'hash map dipende moltissimo dalla bontà della 
+funzione di hashing.
 
 ## HashSet
+
+Gli `HashSet` fondono le funzionalità dei Set e delle funzioni hash per creare una struttura dati in cui 
+non possono esistere duplicati e tutte le operazioni più comuni (inserimento, cancellazione e ricerca) sono 
+eseguite in tempo costante grazie alla funzione di hash eseguita direttamente sull'elemento del set.
+
+Vale la pena sottolineare che gli HashSet sono effettivamente degli insiemi e, come tali, implementano 
+l'interfaccia Set.
+
+
+## HashSet vs HashMap
+
+Vale la pena elencare le differenze tra queste strutture dati a causa della confusione che spesso ne 
+scaturisce. La seguente tabella riassume le differenze principali.
+
+ HashMap | HashSet
+|-------- | ----- 
+Implementano l'interfaccia `Map` | Implementano l'interfaccia `Set`
+Contengono coppie chiave-valore  |  Contengono singoli oggetti
+Non ammettono chiavi duplicate   |  Non ammettono elementi duplicati  
+Possono contenere una singola chiave `null` e un qualsiasi numero di valori `null` associati ad una chiave   |  Pososno contenere un elemento `null`  
+
