@@ -222,6 +222,41 @@ Thread t = new Thread(task);
 t.start();
 ```
 
+Come si può notare il codice scritto diminuisce di molto.
+
+### Streams
+
+La stream API nasce con lo scopo di rendere l'iterazione sulle collectionpiù facile e veloce.
+Uno stream, una volta legato ad una collection, fornisce diversi metodi che possono essere eseguiti
+sui membri della collection stessa.
+
+Per comprendere meglio questa nuova API proviamo a calcolare la somma dei punti di un insieme di tasks
+aperti.
+
+```
+final long totalPointsOfOpenTasks = tasks
+    .stream()
+    .filter( task -> task.getStatus() == Status.OPEN )
+    .mapToInt( Task::getPoints )
+    .sum();
+```
+
+Vediamo cosa succede passo dopo passo:
+
+1. agganciamo uno stream all'array dei tasks
+2. filtriamo tutti i task aperti tramite il metodo `filter`
+3. mappiamo ogni task aperto sul suo punteggio tramite `mapToInt`
+4. sommiamo i punteggi con `sum`
+
+Le operazioni sugli stream si dividono in _intermedie_ e _finali_. Le operazioni intermedie ritornano un 
+nuovo stream, quelle finali attraversano lo stream per produrre un risultato finale. 
+Filter è un'intermedia, sum è una finale.
+
+> Le operazioni intermedie sono _lazy_, quindi non attraversano mai lo stream. 
+> Filter ad esempio non attraversa lo stream effettuando un filtro ma crea un nuovo stream che, 
+> una volta attraversato, conterrà solo gli elementi specificati dal predicato.
+> Le operazioni finali invece, attraversano lo stream producendo un risultato o un side effect.
+
  
 
 
