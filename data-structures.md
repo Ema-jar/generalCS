@@ -112,7 +112,7 @@ Vale la pena sottolineare che gli HashSet sono effettivamente degli insiemi e, c
 l'interfaccia Set.
 
 
-## HashSet vs HashMap
+## HashMap vs HashSet
 
 Vale la pena elencare le differenze tra queste strutture dati a causa della confusione che spesso ne 
 scaturisce. La seguente tabella riassume le differenze principali.

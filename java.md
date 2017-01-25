@@ -172,6 +172,55 @@ Quindi il metodo statico non sa _quale_ variabile d'istanza utilizzare per otten
 Stesso identico discorso per i metodi: un metodo statico non può richiamare al suo interno un metodo _non_
 statico.
 
+## Java 8
+
+La versione 1.8 della JDK introduce molte novità e porta Java su un piano totalmente differente introducendo
+concetti vicini alla programmazione funzionale.
+
+### Lambda e interfacce funzionali
+
+Le lambda sono funzioni anonime utilizzabili seguendo questo tipo di dichiarazione:
+
+`(parametri della funzione) -> {corpo della funzione}`
+
+Volendo concretizzare il precedente pseudocodice possiamo scrivere questa funzione:
+
+`(String myString) -> System.out.println(myString)`
+
+Le lambda sono innanzitutto funzioni, quindi non devono essere per forza associate ad un oggetto, sono
+anonime, quindi possono essere dichiarate senza un nome che le identifichi e, soprattutto, possono
+essere passate come parametro di una metodo.
+
+Le lambda sono fortemente legate ad un'altro concetto introdotto da Java 8, quello delle interfacce 
+funzionali.
+Un'interfaccia funzionale altro non è che un'interfaccia che definisce un singolo metodo. Un classico
+esempio di interfaccia funzionale è `Runnable`, largamente utilizzata per definire un thread.
+
+Runnable definisce un singolo metodo `run()`, proprio per questo può essere sostituita da una lambda come 
+mostrato di seguito.
+
+*JDK 1.7*
+
+```
+Runnable task = new Runnable(){
+	@Override
+	public void run(){
+		System.out.println("I'm running!!!");
+	}
+};
+
+Thread t = new Thread(task);
+t.start();
+```
+
+*JDK 1.8*
+
+```
+Runnable task = () -> { System.out.println("I'm running!!!"); }
+
+Thread t = new Thread(task);
+t.start();
+```
 
  
 
