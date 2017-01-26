@@ -20,3 +20,14 @@ thread attivi in un'applicazione è 1.
 È possibile accedere al thread corrente con il metodo statico `currentThread()` della classe Thread in questo 
 modo: `Thread.currentThread()`.
 
+## Stati di un thread
+
+In Java un thread si trova sempre in uno di questi possibili sei stati:
+
+* NEW -> thread creato ma non ancora avviato
+* RUNNABLE -> thread in esecuzione nella JVM
+* BLOCKED -> thread bloccato
+* WAITING -> thread in attesa che un secondo thread esegua una particolare azione (rischio starvation)
+* TIMED_WAITING -> come per WAITING ma il thread aspetta per un dato intervallo di tempo
+* TERMINATED -> thread che ha terminato la sua esecuzione
+
