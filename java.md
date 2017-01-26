@@ -138,7 +138,7 @@ Le variabili statiche sono inizializzate quando la classe è caricata.
 > viene utilizzato un metodo statico.
 
 Un metodo statico è un metodo il cui comportamento non dipende da una specifica istanza di una classe. 
-Pensiamo ad esempio al metodo `sqrt(double d)` della classe `Math`. Questo metodno eleva al quadrato un valore 
+Pensiamo ad esempio al metodo `sqrt(double d)` della classe `java.lang.Math`. Questo metodno eleva al quadrato un valore 
 passato come input e, per effettuare questa operazione, non ha bisogno di nessuna variabile di istanza
 della classe Math, il metodo agisce solo sull'argomento.
 Se per effettuare un'operazione del genere avessimo bisogno in istanziare ogni volta un oggetto della 
@@ -171,6 +171,12 @@ Il metodo `printName()` è usato chiamandolo su una _classe_ e non su un _riferi
 Quindi il metodo statico non sa _quale_ variabile d'istanza utilizzare per ottenere il valore di `name`.
 Stesso identico discorso per i metodi: un metodo statico non può richiamare al suo interno un metodo _non_
 statico.
+
+## Classi statiche
+
+In Java non è possibile definire una classe _top-level_ come statica. Al massimo è possibile definire la 
+classe come final, fornire un costruttore privato e implementare solo metodi statici al suo interno.
+Questa è esattamente l'idea seguita da molte classi di utilità, come, appunto, la classe Math.
 
 ## Java 8
 
