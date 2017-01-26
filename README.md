@@ -13,3 +13,4 @@ Non sono incluse domande riguardanti il mondo degli algoritmi.
 * [SQL](https://github.com/Ema-jar/generalCSQuestions/blob/master/sql.md)
 * [Design Patterns](https://github.com/Ema-jar/generalCSQuestions/blob/master/design-patterns.md)
 * [Strutture dati](https://github.com/Ema-jar/generalCSQuestions/blob/master/data-structures.md)
+* [Concorrenza](https://github.com/Ema-jar/generalCSQuestions/blob/master/concurrency.md)
