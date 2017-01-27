@@ -178,6 +178,23 @@ In Java non è possibile definire una classe _top-level_ come statica. Al massim
 classe come final, fornire un costruttore privato e implementare solo metodi statici al suo interno.
 Questa è esattamente l'idea seguita da molte classi di utilità, come, appunto, la classe Math.
 
+Nel caso di una classe interna possiamo invece utilizzare la parola chiave static, come mostrato di 
+seguito.
+
+```
+public class A{
+	public static class B{
+	}
+}
+```
+In questo modo la classe statica interna può essere istanziata senza un'istanza di quella esterna, 
+nel classico modo: `B b = new B();`.
+
+Nel caso in cui _B_ non fosse dichiarata statica potremmo istanziarla solo attraverso un'istanza
+di _A_, in questo modo: 
+`B b = a.new B();`
+
+
 ## Java 8
 
 La versione 1.8 della JDK introduce molte novità e porta Java su un piano totalmente differente introducendo
