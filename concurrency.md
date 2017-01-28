@@ -35,7 +35,7 @@ In Java un thread si trova sempre in uno di questi possibili sei stati:
 
 In Java un thread può essere creato in due modi diversi.
 
-*Estendendo la classe Thread*
+**Estendendo la classe Thread**
 ```
 public class MyThread extends Thread{
 
@@ -55,7 +55,7 @@ public class MyThread extends Thread{
 ```
 
 
-*Implementando l'interfaccia Runnable*
+**Implementando l'interfaccia Runnable**
 ```
 public class MyRunnable implements Runnable {
 

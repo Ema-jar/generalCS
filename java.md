@@ -222,7 +222,7 @@ esempio di interfaccia funzionale è `Runnable`, largamente utilizzata per defin
 Runnable definisce un singolo metodo `run()`, proprio per questo può essere sostituita da una lambda come 
 mostrato di seguito.
 
-*JDK 1.7*
+**JDK 1.7**
 
 ```
 Runnable task = new Runnable(){
@@ -236,7 +236,7 @@ Thread t = new Thread(task);
 t.start();
 ```
 
-*JDK 1.8*
+**JDK 1.8**
 
 ```
 Runnable task = () -> { System.out.println("I'm running!!!"); }
