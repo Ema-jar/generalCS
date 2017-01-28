@@ -31,3 +31,49 @@ In Java un thread si trova sempre in uno di questi possibili sei stati:
 * TIMED_WAITING -> come per WAITING ma il thread aspetta per un dato intervallo di tempo
 * TERMINATED -> thread che ha terminato la sua esecuzione
 
+## Creazione di un thread
+
+In Java un thread può essere creato in due modi diversi.
+
+*Estendendo la classe Thread*
+```
+public class MyThread extends Thread{
+
+    public MyThread(String name){
+        super(name);
+    }
+
+    public void run(){
+        System.out.println("I'm a thread!");
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+		MyThread myThread = new MyThread("myThread");
+		myThread.start();
+	}
+}
+```
+
+
+*Implementando l'interfaccia Runnable*
+```
+public class MyRunnable implements Runnable {
+
+		public void run() {
+			System.out.println("I'm a thread!!");
+		}
+
+		public static void main(String[] args) throws InterruptedException {
+			Thread myThread = new Thread(new MyRunnable());
+			myThread.start();
+		}
+	}
+```
+
+Implementare l'interfaccia Runnable è la via da preferire in questo caso poichè rende il codice più
+generico. In questo modo posso creare thread passando un semplice oggetto che implementa Runnable, 
+questo mi evita di specificare un comportamento per ogni classe che deve essere trattata come thread.
+Inoltre evitando di estendere la classe Thread possiamo estendere un'altra classe e conferire le proprietà
+richieste usando l'interfaccia Runnable. 
+
+
