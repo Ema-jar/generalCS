@@ -38,26 +38,6 @@ cui compito è proprio quello di decidere la sequenza di thread in base ai proce
 schedulare i thread in un dato ordine. Questa scelta è presa totalmente dalla JVM e quindi dipende 
 dalla macchina su cui ci troviamo.
 
-
-
-## Stati di un thread
-
-In Java un thread si trova sempre in uno di questi possibili sei stati:
-
-* NEW -> thread creato ma non ancora avviato
-* RUNNABLE -> thread in esecuzione nella JVM
-* BLOCKED -> thread bloccato
-* WAITING -> thread in attesa che un secondo thread esegua una particolare azione (rischio starvation)
-* TIMED_WAITING -> come per WAITING ma il thread aspetta per un dato intervallo di tempo
-* TERMINATED -> thread che ha terminato la sua esecuzione
-
-Un thread appena creato si trova nello stato di NEW, significa che il thread esiste ma non è stato ancora
-chiamato il metodo `start()` su questo thread. Una volta avviato, il thread passa nello stato di RUNNABLE, 
-questo significa che è in esecuzione nella JVM. 
-Un thread avviato può passare nello stato BLOCKED se sta aspettando che una risorsa si liberi, è il caso in 
-cui il thread vuole entrare in un metodo definito synchronized oppure quando sul thread viene invocato il 
-metodo `sleep()`.
-
 ## Creazione di un thread
 
 In Java un thread può essere creato in due modi diversi.
@@ -102,6 +82,24 @@ generico. In questo modo posso creare thread passando un semplice oggetto che im
 questo ci evita di specificare un comportamento per ogni classe che deve essere trattata come thread.
 Inoltre, evitando di estendere la classe Thread, possiamo estendere un'altra classe e conferire le proprietà
 richieste usando l'interfaccia Runnable (ricordiamo che in Java l'ereditarietà multipla non esiste).
+
+## Stati di un thread
+
+In Java un thread si trova sempre in uno di questi possibili sei stati:
+
+* NEW -> thread creato ma non ancora avviato
+* RUNNABLE -> thread in esecuzione nella JVM
+* BLOCKED -> thread bloccato
+* WAITING -> thread in attesa che un secondo thread esegua una particolare azione (rischio starvation)
+* TIMED_WAITING -> come per WAITING ma il thread aspetta per un dato intervallo di tempo
+* TERMINATED -> thread che ha terminato la sua esecuzione
+
+Un thread appena creato si trova nello stato di NEW, significa che il thread esiste ma non è stato ancora
+chiamato il metodo `start()` su questo thread. Una volta avviato, il thread passa nello stato di RUNNABLE, 
+questo significa che è in esecuzione nella JVM. 
+Un thread avviato può passare nello stato BLOCKED se sta aspettando che una risorsa si liberi, è il caso in 
+cui il thread vuole entrare in un metodo definito synchronized oppure quando sul thread viene invocato il 
+metodo `sleep()`.
 
 ## Stop di un thread
 
