@@ -5,11 +5,13 @@ Questo risultato può essere raggiunto dividendo la computazione su più CPU opp
 appartenenti allo stesso network.
 
 ## Threads vs processi
+
 Un processo è un ambiente di esecuzione fornito dal sistema operativo e, in quanto tale, ha il suo insieme
 di risorse (file aperti, memoria ecc ecc).
 I thread invece vivono all'interno di un processo e ondividono tra loro le risorse del processo stesso.
 Genericamente i thread sono utilizzati per eseguire compiti più piccoli, in cui le performance ricoprono
 un ruolo fondamentale.
+
 
 Entrando nel mondo Java un esempio di processo potrebbe essere la JVM in esecuzione. All'interno di
 questo ambiente diversi thread possono essere creati e gestiti dalla JVM stessa.
@@ -19,6 +21,24 @@ thread attivi in un'applicazione è 1.
 
 È possibile accedere al thread corrente con il metodo statico `currentThread()` della classe Thread in questo 
 modo: `Thread.currentThread()`.
+
+## Thread scheduling
+
+Bisogna sottolineare che un vero e proprio multi threading si ha quando si lavora con un sistema 
+dotato di più processori. In casi come questo ogni thread ha un processore dedicato e la computazione
+può davvero essere eseguita in parallelo.
+
+Chiaramente pur avendo più processori una computazione _totalmente_ multi thread è impossibile poichè
+i thread avviati sono decine e decine, quindi avremmo bisogno di macchine con un numero di processori
+molto alto. Proprio per questo su ogni processore si alternano più thread diversi gestiti da uno
+scheduler. nel mondo Java la JVM è dotata di un modulo chiamato _thread scheduler_, una componente il 
+cui compito è proprio quello di decidere la sequenza di thread in base ai processori disponibili.
+
+È importante sottolineare una cosa riguardo la schedulazione dei thread: Java non forza la JVM a 
+schedulare i thread in un dato ordine. Questa scelta è presa totalmente dalla JVM e quindi dipende 
+dalla macchina su cui ci troviamo.
+
+
 
 ## Stati di un thread
 
@@ -35,7 +55,8 @@ Un thread appena creato si trova nello stato di NEW, significa che il thread esi
 chiamato il metodo `start()` su questo thread. Una volta avviato, il thread passa nello stato di RUNNABLE, 
 questo significa che è in esecuzione nella JVM. 
 Un thread avviato può passare nello stato BLOCKED se sta aspettando che una risorsa si liberi, è il caso in 
-cui il thread vuole entrare in un metodo definito synchronized.
+cui il thread vuole entrare in un metodo definito synchronized oppure quando sul thread viene invocato il 
+metodo `sleep()`.
 
 ## Creazione di un thread
 
