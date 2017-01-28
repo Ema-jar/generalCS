@@ -72,8 +72,13 @@ public class MyRunnable implements Runnable {
 
 Implementare l'interfaccia Runnable è la via da preferire in questo caso poichè rende il codice più
 generico. In questo modo posso creare thread passando un semplice oggetto che implementa Runnable, 
-questo mi evita di specificare un comportamento per ogni classe che deve essere trattata come thread.
-Inoltre evitando di estendere la classe Thread possiamo estendere un'altra classe e conferire le proprietà
-richieste usando l'interfaccia Runnable. 
+questo ci evita di specificare un comportamento per ogni classe che deve essere trattata come thread.
+Inoltre, evitando di estendere la classe Thread, possiamo estendere un'altra classe e conferire le proprietà
+richieste usando l'interfaccia Runnable (ricordiamo che in Java l'ereditarietà multipla non esiste).
+
+## Stop di un thread
+
+
+## Synchronize 
 
 
