@@ -85,6 +85,27 @@ richieste usando l'interfaccia Runnable (ricordiamo che in Java l'ereditarietà 
 ## Stop di un thread
 
 
-## Synchronize 
+## Sincronizzazione e locking
+
+È possibile utilizzare la parola chiave `synchronize` per evitare che due thread differenti accedano lo stesso
+metodo nello stesso momento.
+Questo significa che se un thread sta eseguendo un metodo sincronizzato, tutti gli altri thread che devono
+invocare lo stesso metodo devono aspettare che il primo abbia terminato.
+Questa funzionalità permette di evitare situazioni in cui due thread accedano simultaneamente alla stessa 
+risorsa effettuando modifiche o letture che la renderebbero inconsistente. 
+
+Ogni oggetto in Java ha un monitor, cioè un lock, una sorta di chiave d'accesso all'oggetto stesso.
+Genericamente il monitor di un oggetto è sbloccato, quindi nessuno ha preso questa chiave d'accesso.
+La situazione cambia quando un oggetto ha dei metodi sincronizzati, in questo caso, un thread che vuole 
+usare _uno qualsiasi_ di questi metodi, deve bloccare il monitor.
+
+In altre parole, quando un thread vuole accedere ad un metodo sincronizzato deve bloccare il monitor. Questo
+impedisce ad altri thread di accedere a **tutti** i metodi sincronizzati dell'oggetto. Se un thread prova
+ad acquisire un monitor bloccato da un altro thread, questo viene stoppato e si mette in attesa che il monitor
+venga rilasciato dal thread che lo sta usando.
+
+Il monitor di un oggetto viene acquisito quando un thread usa un metodo sincronizzato di questo oggetto e
+viene rilasciato quando l'esecuzione di tale metodo termina con un return.
+
 
 
