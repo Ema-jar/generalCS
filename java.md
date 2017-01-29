@@ -289,9 +289,29 @@ Optional fornisce altri metodi utili come `isPresent()` che permette di controll
 contiene qualcosa diverso da null oppure `empty()`, un metdo statico che permette di creare un 
 optional vuoto.
 
+### Method References
 
+Un method reference permette di abbreviare la sintassi di un'espressione Lambda che esegue **un 
+singolo metodo**.
+La sintassi su cui si basa è la seguente:
+```
+Object :: methodName
+```
 
- 
+Per capire il vantaggio vale la pena di considerare questo esempio di un consumer che 
+prende una stringa e la stampa.
+Realizzando il consumer con una lambda abbiamo un risultato del genere:
+```
+Consumer<String> c = s -> System.out.println(s);
+```
+
+Realizzando lo stesso consumer con un method reference otteniamo un risultato più conciso:
+```
+Consumer<String> c = System.out::println();
+```
+
+Quindi dove possiamo utilizzare una lambda expression possiamo usare un method reference.
+
 
 
 
