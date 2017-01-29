@@ -280,6 +280,17 @@ Filter è un'intermedia, sum è una finale.
 > una volta attraversato, conterrà solo gli elementi specificati dal predicato.
 > Le operazioni finali invece, attraversano lo stream producendo un risultato o un side effect.
 
+### Optional
+
+In Java 1.8 un metodo può tornare un valore _opzionale_ grazie alla classe `java.util.Optional`.
+Un oggetto di tipo Optional può contenere un valore che può essere estratto attraverso il metodo
+`get()`.
+Optional fornisce altri metodi utili come `isPresent()` che permette di controllare se un optional
+contiene qualcosa diverso da null oppure `empty()`, un metdo statico che permette di creare un 
+optional vuoto.
+
+
+
  
 
 
