@@ -312,6 +312,41 @@ Consumer<String> c = System.out::println();
 
 Quindi dove possiamo utilizzare una lambda expression possiamo usare un method reference.
 
+## Default methods
+
+Prima della JDK 1.8 nelle interfacce potevano essere definiti solo _signature_ dei metodi che sarebbero
+poi stati implementati nelle classi che concretizzavano l'interfaccia stessa.
+L'aggiunta di una nuova signature all'interno di un'interfaccia avrebbe costretto tutti gli utilizzatori
+di questa a reimplementare il nuovo metodo, con tutti i porblemi di retrocompatibilità che ne seguono. 
+
+Con l'avvento della JDK 1.8 e con l'aggiunta della Stream API il collection framework è stato esteso 
+con nuovi metodi (forEach, stream, ecc ecc) e questi metodi sono stati inseriti direttamente 
+nell'interfaccia `Collection`. Per far funzionare tutto come prima si sono presentate due possibili 
+alternative:
+
+1. implementare tutti i nuovi metodi in **tutte** le classi che implementavano l'interfaccia Collection,
+quindi modificare tutte le librerie, le API e, in genere, tutto il software basato su questa interfaccia.
+
+2. fornire una nuova versione dell'interfaccia Collection contenente questi metodi **già implementati** come
+_default methods_.
+
+Ovviamente la seconda via è stat quella percorsa, quindi con la JDK 1.8 è possibile specificare 
+l'implementazione di alcuni metodi direttamente in un'interfaccia, a patto di definirli come `default`
+come nel seguente esempio.
+
+```
+public interface InterfaceWithDefault{
+	public default void defaultMethod(){
+		System.out.println( "I am the default method of the interface " );
+	}
+
+	public void toImplementMethod();
+}
+```
+
+
+
+
 
 
 
