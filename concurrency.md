@@ -103,6 +103,36 @@ metodo `sleep()`.
 
 ## Stop di un thread
 
+Stoppare un thread con il metodo `stop()` non è la scelta migliore perchè potrebbe lascire molte risorse
+condivise in uno stato inconsistente.
+Appena invocato il metodo di stop i monitor bloccati dal thread vengono rilasciati, se alcuni degli oggetti
+protetti da questi monitor erano in uno stato inconsistente questi rimangono _danneggiati_ e si presenta
+il problema.
+Oggetti lasciati in uno stato inconsistente creano comportamenti inaspettati, andrebbero quindi evitati.
+
+La soluzione migliore per stoppare un thread è quella di usare una variabile che viene controllata prima
+dell'esecuzione del thread stesso e messa a false quando questo vuole essere stoppato come mostrato
+in questo esempio.
+
+```
+public class Foo extends Thread {
+  private volatile boolean close = false;
+  public void run() {
+    while(!close) {
+      // do work
+    }
+  }
+  public void close() {
+    close = true;
+    // interrupt here if needed
+  }
+}
+```
+
+In questo esempio usiamo una variabile `volatile` per assicurarci che il thread che gestisce il run accedano
+sempre all'ultima versione aggiornata di tale variabile. Questo ci permette di avviare un thread e di 
+stopparlo da un thread differente senza problemi.
+
 
 ## Sincronizzazione e locking
 
