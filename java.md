@@ -198,7 +198,7 @@ di _A_, in questo modo:
 ## Java 8
 
 La versione 1.8 della JDK introduce molte novità e porta Java su un piano totalmente differente introducendo
-concetti vicini alla programmazione funzionale.
+concetti vicini al mondo della programmazione funzionale.
 
 ### Lambda e interfacce funzionali
 
@@ -312,7 +312,7 @@ Consumer<String> c = System.out::println();
 
 Quindi dove possiamo utilizzare una lambda expression possiamo usare un method reference.
 
-## Default methods
+### Default methods
 
 Prima della JDK 1.8 nelle interfacce potevano essere definiti solo _signature_ dei metodi che sarebbero
 poi stati implementati nelle classi che concretizzavano l'interfaccia stessa.
