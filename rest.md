@@ -10,8 +10,8 @@ diversi formati come JSON o XML.
 È importante sottolineare che REST non è un protocollo ma uno stile architetturale, questa 
 è una delle prime differenze rispetto a SOAP.
 
-## Metodi
-I metodi alla base di REST sono i seguenti:
+## Verbi
+I verbi alla base di REST sono i seguenti:
 
 * GET − fornisce accesso in sola lettura ad una risorsa.
 * PUT − permette di creare una nuova risorsa.
@@ -40,6 +40,45 @@ Volendo moltiplicare invece per 0 otterremo un'operazione idempotente ma non sic
 
 Notiamo che alla prima applicazione il risultato diventa uguale a zero e questo non cambia 
 indipendentemente dal numero di volte in cui la moltiplicazione viene applicata.
+
+## PUT vs PATCH
+Spesso non è chiara la differenza tra PUT e PATCH perchè entrambe le operazioni eseguono una
+modifica su una risorsa.
+Innanzitutto la PUT è idempotente, per capire il motivo di questa affermazione dobbiamo fissare
+due punti nell'utilizzo di questo verbo:
+
+ * ci riferiamo ad una entità e non ad una collezione.
+ * l'entità con cui facciamo la PUT è completa, quindi passiamo un oggetto che rappresenta 
+ tutti i campi della risorsa.
+
+Per capire meglio questo concetto immaginiamo di effettuare una GET come segue:
+
+```
+## /users/1
+
+{
+    "username": "skwee357",
+    "email": "skwee357@domain.com"
+}
+```
+
+Ora, se volessimo modificare solamente l'email di questa risorsa potremmo usare una PATCH o UNA PUT,
+nel primo caso potremmo passare un oggetto che rappresenta solo le modifiche da effettuare sulla 
+risorsa, nel secondo caso dovremmo passare un oggetto completo.
+
+```
+PUT /users/1
+{
+    "username": "skwee357",
+    "email": "skwee357@gmail.com"       // new email address
+}
+```
+```
+PATCH /users/1
+{
+    "email": "skwee357@gmail.com"       // new email address
+}
+```
 
 ## Web Services
 I web services sono sistemi software basati su tecnologie open utilizzati principalmente
