@@ -79,6 +79,8 @@ PATCH /users/1
     "email": "skwee357@gmail.com"       // new email address
 }
 ```
+## PUT vs POST
+[[2]](https://stackoverflow.com/questions/630453/put-vs-post-in-rest)
 
 ## Web Services
 I web services sono sistemi software basati su tecnologie open utilizzati principalmente
