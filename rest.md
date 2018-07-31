@@ -62,7 +62,7 @@ Per capire meglio questo concetto immaginiamo di effettuare una GET come segue:
 }
 ```
 
-Ora, se volessimo modificare solamente l'email di questa risorsa potremmo usare una PATCH o UNA PUT,
+Ora, se volessimo modificare solamente l'email di questa risorsa potremmo usare una PATCH o una PUT,
 nel primo caso potremmo passare un oggetto che rappresenta solo le modifiche da effettuare sulla 
 risorsa, nel secondo caso dovremmo passare un oggetto completo.
 
