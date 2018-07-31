@@ -44,7 +44,7 @@ indipendentemente dal numero di volte in cui la moltiplicazione viene applicata.
 ## PUT vs PATCH
 Spesso non è chiara la differenza tra PUT e PATCH perchè entrambe le operazioni eseguono una
 modifica su una risorsa.
-Innanzitutto è richiesto che la PUT sia idempotente mentre la PATCH può anche non esserlo [1](https://stackoverflow.com/questions/28459418/rest-api-put-vs-patch-with-real-life-examples), per capire il motivo di questa affermazione dobbiamo fissare
+Innanzitutto è richiesto che la PUT sia idempotente mentre la PATCH può anche non esserlo [[1]](https://stackoverflow.com/questions/28459418/rest-api-put-vs-patch-with-real-life-examples), per capire il motivo di questa affermazione dobbiamo fissare
 due punti nell'utilizzo di questo verbo:
 
  * ci riferiamo ad una entità e non ad una collezione.
