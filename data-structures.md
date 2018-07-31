@@ -5,7 +5,7 @@ di inserimento, rimozione e modifica.
 
 ## Set, list and map
 
-Tra le strutture dati più comuni vale la penadistinguere tre macrocategorie:
+Tra le strutture dati più comuni vale la pena distinguere tre macrocategorie:
 
 * i set
 * le liste
