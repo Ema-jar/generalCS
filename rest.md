@@ -67,20 +67,29 @@ nel primo caso potremmo passare un oggetto che rappresenta solo le modifiche da 
 risorsa, nel secondo caso dovremmo passare un oggetto completo.
 
 ```
+PATCH /users/1
+{
+    "email": "skwee357@gmail.com"       // new email address
+}
+```
+```
 PUT /users/1
 {
     "username": "skwee357",
     "email": "skwee357@gmail.com"       // new email address
 }
 ```
-```
-PATCH /users/1
-{
-    "email": "skwee357@gmail.com"       // new email address
-}
-```
 ## PUT vs POST
-[[2]](https://stackoverflow.com/questions/630453/put-vs-post-in-rest)
+
+Sia la PUT che la POST possono essere usate per creare una risorsa [[2]](https://stackoverflow.com/questions/630453/put-vs-post-in-rest), vediamo le differenze tra i due verbi.
+
+Solitamente la POST è usata per creare una risorsa che non esiste o per modificare una risorsa esistente.
+Nel primo caso avremo una cosa del genere: `POST /questions/<existing_question>` nel secondo caso invece avremo: `POST /questions`. Creare una nuova risorsa specificando l'id di quest'ultima è invece un errore, quindi questo andrebbe evitato: `POST /questions/<new_question>`.
+La POST **non è** idempotente, potremmo assimilarla all'operazione di post-incremento `x++`.
+
+La PUT invece è usata per creare una nuova risorsa specificando un url preciso oppure per sovrascrivere una risorsa esistente fornendone una nuova.
+Ne consegue che una cosa del genere è corretta `PUT /questions/<new_question>` perchè cre una risorsa in un punto ben preciso specificat dall'url, stessa cosa vale per questa chiamata: `PUT /questions/<existing_question>`, usata per _sovrascrivere_ una risorsa esistente con una nuova.
+La PUT **è idempotente**, potremmo assimilarla all'operazione di settaggio di una variabile, `x = 5`. 
 
 ## Web Services
 I web services sono sistemi software basati su tecnologie open utilizzati principalmente
@@ -118,13 +127,10 @@ Gli uri devono descrivere la risorsa a cui si vuole accedere.
 
 Questi sono buoni esempi di URI che descrivono accuratamente la risorsa REST a cui 
 si vuole accedere.
-Leggendo il primo si comprende con facilità che si stanno cercando le vendite (sales) del 
-quarto trimestr (Q4) dell'anno 2004 (2004).
+Leggendo il primo si comprende con facilità che si stanno cercando le vendite (sales) dell'anno 2004 (2004), relative al 
+quarto trimestr (Q4).
 Il secondo URI è usato per accedere all'ultima release di un software mentre il terzo URI
 ci restituisce tutti i bug aperti.
 
 È importante sottolinerare che gli URI non devono obbligatoriamente essere formattati
 in questo modo ma è sicuramente una best practice da tenere bene in mente.
-
-
-
