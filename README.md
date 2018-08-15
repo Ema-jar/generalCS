@@ -15,3 +15,4 @@ Non sono incluse domande riguardanti il mondo degli algoritmi.
 * [Design Patterns](https://github.com/Ema-jar/generalCSQuestions/blob/master/design-patterns.md)
 * [Strutture dati](https://github.com/Ema-jar/generalCSQuestions/blob/master/data-structures.md)
 * [Concorrenza](https://github.com/Ema-jar/generalCSQuestions/blob/master/concurrency.md)
+* [Sicurezza](https://github.com/Ema-jar/generalCSQuestions/blob/master/security.md)
