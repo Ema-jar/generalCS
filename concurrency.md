@@ -12,7 +12,6 @@ I thread invece vivono all'interno di un processo e ondividono tra loro le risor
 Genericamente i thread sono utilizzati per eseguire compiti più piccoli, in cui le performance ricoprono
 un ruolo fondamentale.
 
-
 Entrando nel mondo Java un esempio di processo potrebbe essere la JVM in esecuzione. All'interno di
 questo ambiente diversi thread possono essere creati e gestiti dalla JVM stessa.
 
@@ -26,7 +25,7 @@ modo: `Thread.currentThread()`.
 
 Bisogna sottolineare che un vero e proprio multi threading si ha quando si lavora con un sistema 
 dotato di più processori. In casi come questo ogni thread ha un processore dedicato e la computazione
-può davvero essere eseguita in parallelo.
+può davvero essere eseguita in parallelo. Nel caso si abbia un solo processore la JVM _simula_ la programmazione multithread scambiando molto velocemente il thread attivo, dando quindi solo l'illusione di essere in un sistema parallelo.
 
 Chiaramente pur avendo più processori una computazione _totalmente_ multi thread è impossibile poichè
 i thread avviati sono decine e decine, quindi avremmo bisogno di macchine con un numero di processori
@@ -60,7 +59,6 @@ public class MyThread extends Thread{
 	}
 }
 ```
-
 
 **Implementando l'interfaccia Runnable**
 ```
@@ -133,6 +131,14 @@ In questo esempio usiamo una variabile `volatile` per assicurarci che il thread 
 sempre all'ultima versione aggiornata di tale variabile. Questo ci permette di avviare un thread e di 
 stopparlo da un thread differente senza problemi.
 
+## Executor Service
+
+Le versioni moderne di Java utilizzano uno strumento chiamato Executor Service per gestire in modo ottimale lo scheduling di più thread.
+Quindi, mentre un tempo l'utilizzo di Thread e Runnable era necessaro, ai giorni nostri sarebbe meglio ricorrere a questa interfaccia.
+
+Il service ci mette a disposizione moltissimi metodi per aggiungere un runnable, per effettuare lo shutdown del gruppo di thread o per attendere che un particolare thread venga processato.
+
+Quindi, se un tempo il meccanismo era basato sul Thread che eseguiva un Runnable, adesso è basato su un task che viene eseguito da un executor. I task sono di due tipo: Runnable e Callable (praticamente un runnable che ritorna un valore).
 
 ## Sincronizzazione e locking
 
@@ -156,5 +162,17 @@ venga rilasciato dal thread che lo sta usando.
 Il monitor di un oggetto viene acquisito quando un thread usa un metodo sincronizzato di questo oggetto e
 viene rilasciato quando l'esecuzione di tale metodo termina con un return.
 
+Un altro modo per ottenere la sincronizzazione di una risorsa non thread safe senza usare synchronize è l'utilizzo dei Thread Local.
+Un thread local è un oggetto accessibile solo all'interno del thread in cui viene istanziato, quindi una variabile inserita in un thread local è sicuramente accessibile da un solo thread.
 
+L'uso di un thread local andrebbe evitato nel caso in cui i thread vengano gestiti con un Executor Service perchè si potrebbe incorrere in un comportamento non deterministico.
+
+
+## Deadlock e starvation
+
+Il deadlock è un problema di sincronizzazione che si verifica quando due o più processi si bloccano in attesa che un altro rilasci una risorsa.
+
+Ipotiziamo di avere due processi P1 e P2, P1 ha un lock sulla risorsa A e sta aspettando che la risorsa B si liberi per completare il suo task, P2 ha un lock sulla risorsa B e sta aspettando che la risorsa A si liberi per terminare il suo task. I due processi restano bloccati indefinitivamente. Per evitare un deadlock si possono attuare diverse tecniche basate sul forzare ogni processo a richiedere una sola risorsa per volta oppure facendo in modo che i processi richiedano le risorse in base ad una data gerarchia.
+
+Un problema analogo è quello della starvation, cioè la _morte per fame_ di un processo che non riesce mai ad accedere ad una risorsa condivisa. Problemi di starvation possono colpire i processi a bassa priorità in un sistema a scheduler. Questi processi non riescono mai ad essere eseguiti perchè la CPU viene sempre _rubata_ da un processo dotato di priorità maggiore.
 
