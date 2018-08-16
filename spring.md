@@ -39,5 +39,42 @@ Gli ultimi tre scope vengono definiti _web-aware_ perchè hanno un senso all'int
  - @Lazy: solitamente quando in un componente ci sono dipendenze iniettate tramite autowire queste vengono create e configurate all'avvio. Se usiamo questa annotation facciamo in modo di instanziare questi oggetti sollo la prima volta che vengono richiesti.
  - @Transactional: questa annotazione deve essere prima configurata utilizzando @EnableTransactionManagement. A questo punto la classe o il metodo annotati supporteranno configurazioni come ad esempio quella di rollback o di timeout per la transazione. Importante notare che il rollback avverrà solo in caso di eccezioni unchecked.
 
+## Hibernate
 
+Hibernate è un ORM spesso utilizzato con Spring. [[1]](https://www.journaldev.com/3633/hibernate-interview-questions-and-answers)
+I benefici di una libreria come Hibernate sono molteplici. Innanzitutto si crea un mapping tra il mondo dei database, notoriamente basato su relazioni con il mondo a oggetti presente in un contesto Java, inoltre Hibernate pone un livello tra l'applicazione e il database, in questo modo la tecnologia utilizzata per il salvataggio dei dati può essere cambiata senza che l'applicazione ne risenta.
 
+Hibernate altro non è che un'implementazione della Java Persistance API (JPA) e può essere visto come un livello costruito sopra JDBC. 
+
+Le funzionalità messe a disposizioni da Hibernate sono molteplici e aiutano lo sviluppatore nelle comuni operazioni di CRUD, nella creazione di query complesse o nel mapping tra oggetti java e tabelle del database.
+Senza Hibernate dovremmo utilizzare JDBC, con tutti le difficoltà che questo comporta: 
+
+ - molto boilerplate
+ - gestione delle operazioni transazionali mancante
+ - utilizzo di molti try/catch per gestire le SQLException, che sono catched exceptions
+ - mancata possibilità di creazione delle tabelle sul db
+
+Hibernate fa un uso massivo delle sessioni che rappresentano il mezzo di comunicazione tra l'applicazione e il database. Una sessione è un oggetto leggero che viene istanziato ogni volta che inadiamo ad interagire con un'entità mappata. La sessione non è thread safe e dovrebbe essere aperta e chiusa nel più breve tempo possibile.
+
+Una volta aperta una sessine posso anche eseguire un'operazione transazionale come mostrato nel seguente esempio:
+
+```
+Session session = factory.openSession();
+Transaction tx = null;
+
+try {
+   tx = session.beginTransaction();
+   // do some work
+   ...
+   tx.commit();
+}
+
+catch (Exception e) {
+   if (tx!=null) tx.rollback();
+   e.printStackTrace(); 
+} finally {
+   session.close();
+}
+```
+
+Possiamo notare che dentro una transazione può essere sollevata un'eccezione, in tal caso si fa rollback e la sessione viene chiusa.
