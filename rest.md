@@ -84,7 +84,7 @@ PUT /users/1
 Sia la PUT che la POST possono essere usate per creare una risorsa [[2]](https://stackoverflow.com/questions/630453/put-vs-post-in-rest), vediamo le differenze tra i due verbi.
 
 Solitamente la POST è usata per creare una risorsa che non esiste o per modificare una risorsa esistente.
-Nel primo caso avremo una cosa del genere: `POST /questions/<existing_question>` nel secondo caso invece avremo: `POST /questions`. Creare una nuova risorsa specificando l'id di quest'ultima è invece un errore, quindi questo andrebbe evitato: `POST /questions/<new_question>`.
+Nel primo caso avremo una cosa del genere: `POST /questions` nel secondo caso invece avremo: `POST /questions/<existing_question>`. Creare una nuova risorsa specificando l'id di quest'ultima è invece un errore, quindi questo andrebbe evitato: `POST /questions/<new_question>`.
 La POST **non è** idempotente, potremmo assimilarla all'operazione di post-incremento `x++`.
 
 La PUT invece è usata per creare una nuova risorsa specificando un url preciso oppure per sovrascrivere una risorsa esistente fornendone una nuova.
