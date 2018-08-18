@@ -24,11 +24,9 @@ I beans istanziati dal container hanno uno scope che può variare.
 4. Session: il container istanzia un bean richiesto ad ogni sessione HTTP.
 5. Global: usato in applicazioni dotate di portlet container. Ogni portlet ha le sue sessioni, un bean global è disponibile in tutte queste sessioni.
 
-Gli ultimi tre scope vengono definiti _web-aware_ perchè hanno un senso all'interno di un contesto web. Bisogna ricordare che lo scope dui default per un bean è Singleton.
+Gli ultimi tre scope vengono definiti _web-aware_ perchè hanno un senso all'interno di un contesto web.
 
 ## Annotation comuni
-
-Spring utilizza molto le annotation per decorare classi, metodi e variabili.
 
  - @Component: annotazione generica per il generico componente di spring, il component equivale ad un Bean. Specializzazioni di Component sono Service e Repository.
  - @Service: rappresentano il livello di servizio, la parte dell'applicazione in cui c'è logica.
@@ -40,22 +38,11 @@ Spring utilizza molto le annotation per decorare classi, metodi e variabili.
  - @Bean: è utilizzata per definire diversi dipi di Bean, lavora a livello di metodo. Quando l'applicazione viene avviata il risultato del metodo viene salvato in una BeanFactory e può essere usato in seguito.
  - @Lazy: solitamente quando in un componente ci sono dipendenze iniettate tramite autowire queste vengono create e configurate all'avvio. Se usiamo questa annotation facciamo in modo di instanziare questi oggetti sollo la prima volta che vengono richiesti.
  - @Transactional: questa annotazione deve essere prima configurata utilizzando @EnableTransactionManagement. A questo punto la classe o il metodo annotati supporteranno configurazioni come ad esempio quella di rollback o di timeout per la transazione. Importante notare che il rollback avverrà solo in caso di eccezioni unchecked.
- - @Required: è utilizzato sui setter e indica che le proprietà del bean che contiene questa annotazione devono essere popolate a configuration time.
-
-## Moduli comuni
-
-Spring è composto da molti moduli, tra i più utilizzati abbiamo:
-
- - Core: utilizzato per la dependency injection, l'inversione di controllo e la gestione dei beans
- - MVC: supporto al model-view-cpontroller, permette di creare web app, web services ecc
- - ORM: supporto per tool come Hibernate
- - JDBC: fornisce un livello di astrazione per JDBC evitando di dover scrivere codice per ogni tipologia di db
- - AOP: utilizzato per l'Aspect Oriented Programming
- - Security: modulo utilizzato per gestire autenticazione e autorizzazione
 
 ## Hibernate
 
 Hibernate è un ORM spesso utilizzato con Spring. [[1]](https://www.journaldev.com/3633/hibernate-interview-questions-and-answers)
+
 I benefici di una libreria come Hibernate sono molteplici. Innanzitutto si crea un mapping tra il mondo dei database, notoriamente basato su relazioni con il mondo a oggetti presente in un contesto Java, inoltre Hibernate pone un livello tra l'applicazione e il database, in questo modo la tecnologia utilizzata per il salvataggio dei dati può essere cambiata senza che l'applicazione ne risenta.
 
 Hibernate altro non è che un'implementazione della Java Persistance API (JPA) e può essere visto come un livello costruito sopra JDBC. 
@@ -93,13 +80,29 @@ catch (Exception e) {
 
 Possiamo notare che dentro una transazione può essere sollevata un'eccezione, in tal caso si fa rollback e la sessione viene chiusa.
 
-Hibernate viene configurato attraverso un file di configurazione attraverso il quale possono essere configurati molti aspetti del framework, tra cui la possibilità di mostrare le query fatte.
+## Spring data
 
-Tra le varie annotazioni messe a disposizione da Hibernate abbiamo:
- - @Entity: usata per definire un'entità da mappare nel db
- - @Table: usata con la @Entity per definir ela tabella del db a cui l'entità fa riferimento
- - @Id: definisce la chiave primaria all'interno di una tabella
- - @GeneratedValue: usato in relazine con @Id, definisce la strategia da usare per generare la chiave primaria
- - @Cascade: unisce due entità e fa in modo che la modifica di una si ripercuota sull'altra.
+Un altro progetto molto utilizzato all'interno dell'ecosistema Spring è spring data.
 
-Un altro aspetto interessante di Hibernate riguarda il _lazy loading_. Una collectiona associata ad un'entity non viene caricata dal db fino a che non viene richiesta. Non appena viene fatto un get sulla collection, se questa non è in cache, parte la query. 
+Sprig data mette a disposizione degli sviluppatori alcuni potenti mezzi per semplificare le query e le interazioni con il db. I repository ad esempio possono essere utilizzati per creare delle query basate sul nome dei metodi definiti in un'interfaccia che estende un repository, come nel seguente esempio:
+
+```
+interface UserRepository extends CrudRepository<User, Long> {
+
+  long deleteByLastname(String lastname);
+
+  List<User> removeByLastname(String lastname);
+}
+
+```
+
+Ogni tipologia di repository fornisce funzionalità differenti come i CRUD oppure la possibilità di ottenere un risultato paginato o, ancora, ordinato.
+
+I repository possono essere anche a notati con annotazioni atte a controllare la non-nullità del risultato. @NonNullable applicata ad un metodo lancia un'eccezione nel caso in cui il metodo restituisca un valore null.
+
+Spring data fornisce allo sviluppatore l'opportunità di creare delle query utilizzando l'annotation @Query, questa annotation permette anche di eseguire le query scritte come query native.
+Anche le stored procedure possono essere utilizzate grazie a Spring data, referenziando la procedura con l'annotation @Procedure.
+
+Le query by ezample sono un altro mezzo molto potente per effettuare una query utilizzando come _esempio_ un oggetto dell'entità che si vuole ricercare.
+
+Hibernate e Spring Data possono lavorare insieme semplificandosi i compiti a vicenda. Mentre Hibernate fornisce una mappatura diretta tra il db e l'applicazione sviluppata in OOP, Spring data aiuta nella creazione delle interfacce di DAO fornendo dei metodi utili per fare CRUD.
