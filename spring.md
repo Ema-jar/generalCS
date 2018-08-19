@@ -103,6 +103,6 @@ I repository possono essere anche a notati con annotazioni atte a controllare la
 Spring data fornisce allo sviluppatore l'opportunità di creare delle query utilizzando l'annotation @Query, questa annotation permette anche di eseguire le query scritte come query native.
 Anche le stored procedure possono essere utilizzate grazie a Spring data, referenziando la procedura con l'annotation @Procedure.
 
-Le query by ezample sono un altro mezzo molto potente per effettuare una query utilizzando come _esempio_ un oggetto dell'entità che si vuole ricercare.
+Le query by example sono un altro mezzo molto potente per effettuare una query utilizzando come _esempio_ un oggetto dell'entità che si vuole ricercare.
 
 Hibernate e Spring Data possono lavorare insieme semplificandosi i compiti a vicenda. Mentre Hibernate fornisce una mappatura diretta tra il db e l'applicazione sviluppata in OOP, Spring data aiuta nella creazione delle interfacce di DAO fornendo dei metodi utili per fare CRUD.
