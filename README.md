@@ -16,3 +16,4 @@ Non sono incluse domande riguardanti il mondo degli algoritmi.
 * [Strutture dati](https://github.com/Ema-jar/generalCSQuestions/blob/master/data-structures.md)
 * [Concorrenza](https://github.com/Ema-jar/generalCSQuestions/blob/master/concurrency.md)
 * [Sicurezza](https://github.com/Ema-jar/generalCSQuestions/blob/master/security.md)
+* [Web](https://github.com/Ema-jar/generalCSQuestions/blob/master/web.md)
