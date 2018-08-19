@@ -13,11 +13,13 @@ diversi formati come JSON o XML.
 ## Verbi
 I verbi alla base di REST sono i seguenti:
 
-* GET − fornisce accesso in sola lettura ad una risorsa.
-* PUT − permette di creare o sovrascrivere una risorsa.
-* DELETE − permette di rimuovere una risorsa.
-* POST − permette di creare una nuova risorsa.
-* PATCH − permette di modificare un sottoinsieme dei campi di una risorsa.
+* GET − fornisce accesso in sola lettura ad una risorsa
+* PUT − permette di creare o sovrascrivere una risorsa
+* DELETE − permette di rimuovere una risorsa
+* POST − permette di creare una nuova risorsa
+* PATCH − permette di modificare un sottoinsieme dei campi di una risorsa
+* OPTION - permette di inviare un preflight
+* HEAD - permette di ottenere una risorsa esattamente come farebbe una GET ma senza body, usata per esempio prima di richiedere una risorsa molto pesante
 
 GET è un'operazione definita _sicura_ perché non modifica la risorsa verso la quale viene eseguita.
 GET, PUT e DELETE sono operazioni dette _idempotenti_. Questo significa che il risultato è lo stesso
