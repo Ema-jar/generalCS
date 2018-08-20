@@ -8,7 +8,7 @@ appartenenti allo stesso network.
 
 Un processo è un ambiente di esecuzione fornito dal sistema operativo e, in quanto tale, ha il suo insieme
 di risorse (file aperti, memoria ecc ecc).
-I thread invece vivono all'interno di un processo e ondividono tra loro le risorse del processo stesso.
+I thread invece vivono all'interno di un processo e condividono tra loro le risorse del processo stesso.
 Genericamente i thread sono utilizzati per eseguire compiti più piccoli, in cui le performance ricoprono
 un ruolo fondamentale.
 
