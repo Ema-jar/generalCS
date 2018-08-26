@@ -12,7 +12,7 @@ Non sono incluse domande riguardanti il mondo degli algoritmi.
 * [Java](https://github.com/Ema-jar/generalCSQuestions/blob/master/java.md)
 * [Eccezioni](https://github.com/Ema-jar/generalCSQuestions/blob/master/exceptions.md)
 * [Spring](https://github.com/Ema-jar/generalCSQuestions/blob/master/spring.md)
-* [SQL](https://github.com/Ema-jar/generalCSQuestions/blob/master/sql.md)
+* [Database](https://github.com/Ema-jar/generalCSQuestions/blob/master/database.md)
 * [Design Patterns](https://github.com/Ema-jar/generalCSQuestions/blob/master/design-patterns.md)
 * [Strutture dati](https://github.com/Ema-jar/generalCSQuestions/blob/master/data-structures.md)
 * [Concorrenza](https://github.com/Ema-jar/generalCSQuestions/blob/master/concurrency.md)
