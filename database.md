@@ -230,3 +230,38 @@ L'indicizzazione diventa fondamentale quando una tabella cresce di dimensioni e 
 
 Ovviamente gli svantaggi degli indici riguardano tutte quelle query che non sono basate su un'uguaglianza. Ipotizioamo di voler trovare tutti i dipendenti che hanno meno di 40 anni, in questo caso un indice non aiuta.
 Bisogna anche tener conto che ogni volta che facciamo un update o una insert sulla tabella indicizzata l'indice deve essere aggiornato per contenere il nuovo valore, inoltre all'aumentare della grandezza della tabella aumenta anche la dimensione dell'indice, questo può essere un problema a livello di spazio. 
+
+## Database non relazionali
+
+I database non relazionali si differenziano da quelli relazionali perchè non fanno uso di uno schema fisso basato su relazioni.
+
+Questi modelli di dati non richiedono uno schema fisso e permettono una maggiore scalabilità dal punto di vista orizzonatale.
+
+Mentre un SQL scala aumentando la potenza della macchine su cui viene hostato, un noSQL scala aumentandone le istanze o gli shard, in maniera, appunto, orizzontale.
+
+Le performance dei database non relazionali sono spesso migliori, soprattutto per le query più leggere. Vale la pena notare che il concetto di join non è contemplato nei noSQL, almeno non in maniera tradizionale, questo impone l'utilizzo di una struttura più leggera e flessibile. Dall'altro lato, proprio per questa struttura, i database noSQL impongono una maggiore duplicazione di dati e quindi una maggiore difficoltà nell'aggiornamento, anche dovuta al fatto che i noSQL non supportano bene le transazioni [[3](https://stackoverflow.com/a/1996579/2649618)][[4](https://www.infoworld.com/article/2617405/nosql/7-hard-truths-about-the-nosql-revolution.html)].
+
+Un database noSQL può seguire diverse classificazioni, tra le più usate abbiamo:
+
+ - orientati al documento: come elasticsearch, mongo o solr. In questa tipologia di dati i record non sono raccolti in righe ma in documenti di dimensioni variabili
+ - a grafo: come Neo4j. In questi database le informazioni vengono immagazzinate utilizzando nodi e archi di un grafo
+ - chiave valore: come Redis. in questi database le informazioni vengono mantenute come coppia di chiave-valore, ad ogni chiave possono essere associati diversi dipi di dati.
+ 
+
+### Redis
+
+Redis è un database non relazionale basato su un'organizzazione chiave-valore. Un aspetto interessante di Redis riguarda la tipologia di dati utilizzabili come chiavi, solitamente la chiave è una stringa mentre con Redis è possibile usare chiavi di tipo Lista, Set, HashMaps ecc ecc [[5](https://redis.io/topics/data-types-intro)].
+
+Una chiave può essere qualsiasi sequenza binaria, dalla semplice stringa fino al contenuto di un file PNG.
+Una buona norma è quella di non usare chiavi troppo lunghe perchè la ricerca potrebbe essere poco performante. Non esiste invece una lunghezza minima delle chiavi, anche se, vista l'organizzazione dei dati offerta, conviene utilizzare dei nomi esplicativi, come ad esempio: `user:1000:followers` oppure `comment:1234:reply-to`.
+
+Redis supporta una versine molto semplificata di duplicazione master-slave. In questo modo il redis slave tenta di agganciarsi al master e di mantenersi sempre aggiornato con esso.
+I meccanismi su cui è basato questo funzionamento sono principalmente tre:
+
+ - Quando master e slave sono connessi è il master che invia comandi di sincronizzazine verso lo slave, quindi è lui che si preoccupa di mantenere lo slave aggiornato
+ - Se si verifica una disconnessione (ad esempio a causa di un problema di rete), non appena lo slave si riconnette tenta di recuperare dal master le informazioni venute a mancare a causa della disconnessione forzando una sincronizzazione parziale
+ - Se una sincronizzazione parziale non è possibile allora lo slave chiede esplicitamente al master una sincronizzazione, questo processo è più complesso e dispendioso dal punto di vista delle performance
+
+Bisogna sottolineare alcuni aspetti relativi al rapporto tra master e slave in Redis. Prima di tutto dobbiamo ricordare che le operzini di sincronizzazione non sono bloccanti, quindi il master può continuare a gestire le query sottomesse mentre sincronizza lo slave o gli slave presenti (si, più slave possono far capo ad un singolo master).
+
+
