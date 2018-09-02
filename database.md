@@ -71,6 +71,7 @@ Gli operatori aggregati più comuni sono:
 Abbiamo detto che un operatore aggregato lavora sulla colonna su cui viene richiamato. Ipotizziamo di avere una tabella che contiene tutte le vendite fatte dai nostri dipendenti per ogni componente prodotta:
 
 **Sales**
+
 |id|name     |sales|product  |
 |--|---------|-----|---------|
 |1 |emanuele |2    |ram      |
@@ -136,6 +137,7 @@ I join ci permettono di incrociare le nostre tabelle e creare delle query su rel
 Il concetto di join è fortemente legato a quello di prodotto cartesiano, consideriamo le seguenti due tabelle:
 
 **Girl**
+
 |girl_id|girl |toy_id|
 |-------|-----|------|
 |1      |Jane |3     |
@@ -143,6 +145,7 @@ Il concetto di join è fortemente legato a quello di prodotto cartesiano, consid
 |3      |Cindy|1     |
 
 **Toy**
+
 |toy_id|toy         |
 |------|------------|
 |1     |hula hop    |
@@ -171,6 +174,7 @@ Il terzo tipo di join considerato è il `LEFT OUTER JOIN`. Un join di questo tip
 Per comprendere meglio utiliziamo le precedenti tabelle con una piccola modifica, la tabella toy diventerà:
 
 **Toy**
+
 |toy_id|toy         |
 |------|------------|
 |1     |hula hop    |
