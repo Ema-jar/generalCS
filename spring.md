@@ -10,11 +10,11 @@ Spring implementa l'Inversione di Controllo attraverso la Dependency Injection. 
 
 Nel mondo di Spring compare spesso la parola Bean. Un bean è un'istanza di un oggetto gestita dal container di Spring. Immaginiamoli come una serie di oggetti creati e messi dentro il container per essere utilizzati ovunque nell'applicazione.
 
-## BeanFactory e ApplicationContext
+### BeanFactory e ApplicationContext
 
 La BeanFactory è responsabile della gestione di tutti gli oggetti all'interno di un'applicazione Spring, quindi l'inversione di controllo viene messa in atto da questo modulo. In particolare la BeanFactory si occupa dell'istanziazione e del wiring dei vari oggetti. L'ApplicationContext estende la BeanFactory e ne aumenta le funzionalità, di fatto è la classe utilizzata maggiormente, a meno che non ci siano motivi seri per utilizzare la BeanFactory.
 
-## Scope dei beans
+### Scope dei beans
 
 I beans istanziati dal container hanno uno scope che può variare.
 
