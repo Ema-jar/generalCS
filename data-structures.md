@@ -58,7 +58,7 @@ rappresentate da un'hash map.
 precedente, un'ArrayList è invece implementato su un array.
 
 Un elemento in una LinkedList non può essere indirizzato in tempo costante poichè una lista del genere non è
-posizionale. Ne consegue che l'inserimento o la rimozione hanno un tempo di esecuzione di O(n) nel caso
+posizionale. Ne consegue che l'inserimento o la rimozione hanno un tempo di esecuzione di `O(n)` nel caso
 peggiore.
 L'inserimento in prima posizione è invece molto vantaggioso e può essere eseguito in tempo costante.
 
@@ -102,6 +102,15 @@ in cui una collisione si verifichi bisognerà scansire la lista associata alla c
 richiesto, proprio per questo il tempo di estrazione di un'hash map dipende moltissimo dalla bontà della 
 funzione di hashing.
 
+## LinkedHashMap
+
+Possiamo fare uso di una `LinkedHashMap` se vogliamo unire i vantaggi della mappa (organizzazione chiave-valore) ad un ordinamento basato sull'ordine di inserimento. Una struttura dati del genere mantiene l'ordinamento di inserimento tenendo insieme gli elementi con una lista linkata. 
+
+## TreeMap
+
+Le `TreeMap` vengono utilizzate quando vogliamo mantenere un'ordinamento all'interno di una mappa e rappresenta fedelmente un albero rosso nero. Tale ordinamento è mantenuto utilizzando un comparator (passabile anche da costruttore).
+Le TreeMap garantiscoo operazioni di inserimento, ricerca, e rimozione in tempo `log(n)`
+
 ## HashSet
 
 Gli `HashSet` fondono le funzionalità dei Set e delle funzioni hash per creare una struttura dati in cui 
@@ -110,6 +119,15 @@ eseguite in tempo costante grazie alla funzione di hash eseguita direttamente su
 
 Vale la pena sottolineare che gli HashSet sono effettivamente degli insiemi e, come tali, implementano 
 l'interfaccia Set.
+
+## LinkedHashSet
+
+Volendo mantenere un ordine all'interno di un HashSet si può fare uso di un `LinkedHashSet`. Una struttura dati del genere mantiene l'ordinamento di inserimento tenendo insieme gli elementi con una lista linkata. L'inserimento di un duplicato viene rigettato mantenendo intatto l'ordine.
+
+## TreeSet
+
+Un `TreeSet` mantiene l'ordine dei suoi elementi interni utilizzando una funzione di comparazione (passabile anche da costruttore).
+Una struttura dati come questa garantisce le operazioni di inserimento, rimozione e ricerca in tempo `log(n)`. La principale differenza dalla LinkedHashSet sta proprio nel modo in cui viene gestito l'ordinamento. Un TreeSet basa l'ordinamento su un albero mentre la LinkedHashMap usa una lista, per questo motivo la seconda riesce a mantenere solo un ordinamento di inserimento.
 
 
 ## HashMap vs HashSet
