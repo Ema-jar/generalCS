@@ -235,6 +235,46 @@ L'indicizzazione diventa fondamentale quando una tabella cresce di dimensioni e 
 Ovviamente gli svantaggi degli indici riguardano tutte quelle query che non sono basate su un'uguaglianza. Ipotizioamo di voler trovare tutti i dipendenti che hanno meno di 40 anni, in questo caso un indice non aiuta.
 Bisogna anche tener conto che ogni volta che facciamo un update o una insert sulla tabella indicizzata l'indice deve essere aggiornato per contenere il nuovo valore, inoltre all'aumentare della grandezza della tabella aumenta anche la dimensione dell'indice, questo può essere un problema a livello di spazio. 
 
+## ORM
+
+Gli ORM (Object-relational mapping) rappresenta una tecnica utilizzata per convertire dati tra sistemi incompatibili, come ad esempio succede quando vogliamo convertire dati modellati seguendo un approccio Object Oriented in un set di dati organizzati seguendo un approccio relazionale.
+
+Questo problema che si incontra tra i due modelli viene chiamato Object Relational Impedance Mismatch. Questo problema si articola su differenti punti:
+ - granularità
+ - ereditarietà
+ - identità
+ - navigazione
+
+### Granularità
+
+Nel mondo del software la granularità è la capacità di un sistema di essere spezzattato in parti più piccole. 
+
+In un modello basato su oggetti possiamo avere vari livelli di granularità. Prendiamo per esempio un oggetto `Persona`, questo oggetto può essere composto da diversi _sotto-oggetti_, come ad esempio un oggetto `Indirizzo`, che a sua volta sarà scomposto in molteplici sotto-oggetti.
+
+In un modello relazionale i livelli di granularità sono essenzialmente due: _tabelle_ e _colonne_.
+
+In parole povere, un modello ad oggetti è genericamente più granulare di un modello relazionale.
+
+### Ereditarietà
+
+L'ereditarietà è un aspetto fondamentale della programmazione ad oggetti. Sfortunatamente in un modello relazionale non abbiamo ereditarietà, ne consegue che diversi _sotto-tipi_ verranno rappresentati nella stessa tabella e la differenziazione verrà fatta usando un attributo della stessa.
+
+### Identità
+
+Nella programmazione ad oggetti i concetti di _identità_ e _uguaglianza_ rappresentano due idee molto differenti. Il controllo `foo == bar` risulta vero se sia foo che bar puntano allo stesso indirizzo di memoria.
+
+Il controllo `foo.equals(bar)` risulta vero in base all'implementazione fornita del metodo `equals()`.
+
+In parole povere due oggetti che si trovano nello stesso stato potrebbero essere considerati _uguali_ ma non _identici_. Questo concetto non è facilmente mappabile su un modello relazionale, in una base di dati il controllo viene fatto solo sulla chiave primaria.
+
+### Navigazione
+
+Nella programmazione ad oggetti possiamo navigare da un oggetto all'altro fino a raggiungere il dato di cui abbiamo bisogno, un classico esempio è: `foo.getBar().getName()`.
+
+La stessa cosa non è possibile in un database. Accedere sequenzialmente a più tabelle è un'operazione estremamente dispendiosa dal punto di vista computazionale, accedere molte tabelle ha un costo molto alto in termini di prestazioni e cozza irrimediabilmente con l'idea di base dell'ottimizzazione di un database basata sul limitarne il numero di accessi. 
+
+L'unico modo per ottenere lo stesso risultato limitando gli accessi al database è tramite l'utilizzo di un `JOIN`.
+
 ## Database non relazionali
 
 I database non relazionali si differenziano da quelli relazionali perchè non fanno uso di uno schema fisso basato su relazioni.
