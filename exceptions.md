@@ -2,7 +2,7 @@
 
 Le eccezioni sono utilizzate per bloccare il normale flusso di un programma a causa di un evento _eccezionale_.
 
-Il seguente codice mostra un utilizzo totalement eerrato del concetto di eccezione e, di conseguenza, andrebbe evitato:
+Il seguente codice mostra un utilizzo totalmente errato del concetto di eccezione e, di conseguenza, andrebbe evitato:
 ```
 try{
     int i = 0;
@@ -18,7 +18,7 @@ Come si può notare si vuole ciclare su un array utilizzando un'eccezione per de
 Il precedente approccio è errato per i seguenti motivi:
 
 1. le eccezioni sono pensate per descrivere eventi effettivamente eccezionali, quindi non dovrebbero mai essere usate per controllare il flusso di esecuzione di un programma
-2. l'ìutilizzo di un blocco `try/catch` blocca la JVM dall'effettuare molte ottimizzazioni 
+2. l'utilizzo di un blocco `try/catch` blocca la JVM dall'effettuare molte ottimizzazioni 
 
 ## Eccezioni checked vs unchecked
 
@@ -71,7 +71,7 @@ Per ottenere questo risultato possono essere seguiti diversi approcci:
 2. Effettuare il controllo che potrebbe sollevare l'eccezione _prima_ di eseguire l'operazione.
 3. Effettuare le operazioni su una copia temporanea dell'oggetto, che verrà sostituita con l'originale solo quando l'operazione sarà stata eseguita senza problemi.
 
-## Ignorare ecezioni
+## Ignorare eccezioni
 
 A volte capita di vedere codice del genere:
 ```
@@ -83,4 +83,4 @@ try{
 ```
 
 Ignorare un'eccezione è una pratica da evitare sempre. Anche quando non c'è nulla da fare all'interno di un blocco catch, vale comunque la pena loggare delle informazioni che segnalino allo sviluppatore un comportamento anomalo.
-Ignorare un'eccezine è come sentire l'allarme antincendio e spegnerlo senza fare nulla, il risultato potrebbe essere disastroso e il nostro programma potrebbe fallire in un altro punto a causa dell'eccezione non gestita, rendendo difficilissimo il corretto debug.
+Ignorare un'eccezione è come sentire l'allarme antincendio e spegnerlo senza fare nulla, il risultato potrebbe essere disastroso e il nostro programma potrebbe fallire in un altro punto a causa dell'eccezione non gestita, rendendo difficilissimo il corretto debug.

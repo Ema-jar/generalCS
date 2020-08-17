@@ -259,13 +259,35 @@ Redis è un database non relazionale basato su un'organizzazione chiave-valore. 
 Una chiave può essere qualsiasi sequenza binaria, dalla semplice stringa fino al contenuto di un file PNG.
 Una buona norma è quella di non usare chiavi troppo lunghe perchè la ricerca potrebbe essere poco performante. Non esiste invece una lunghezza minima delle chiavi, anche se, vista l'organizzazione dei dati offerta, conviene utilizzare dei nomi esplicativi, come ad esempio: `user:1000:followers` oppure `comment:1234:reply-to`.
 
-Redis supporta una versine molto semplificata di duplicazione master-slave. In questo modo il redis slave tenta di agganciarsi al master e di mantenersi sempre aggiornato con esso.
+Redis supporta una versione molto semplificata di duplicazione master-slave. In questo modo il redis slave tenta di agganciarsi al master e di mantenersi sempre aggiornato con esso.
 I meccanismi su cui è basato questo funzionamento sono principalmente tre:
 
- - Quando master e slave sono connessi è il master che invia comandi di sincronizzazine verso lo slave, quindi è lui che si preoccupa di mantenere lo slave aggiornato
+ - Quando master e slave sono connessi è il master che invia comandi di sincronizzazione verso lo slave, quindi è lui che si preoccupa di mantenere lo slave aggiornato
  - Se si verifica una disconnessione (ad esempio a causa di un problema di rete), non appena lo slave si riconnette tenta di recuperare dal master le informazioni venute a mancare a causa della disconnessione forzando una sincronizzazione parziale
  - Se una sincronizzazione parziale non è possibile allora lo slave chiede esplicitamente al master una sincronizzazione, questo processo è più complesso e dispendioso dal punto di vista delle performance
 
-Bisogna sottolineare alcuni aspetti relativi al rapporto tra master e slave in Redis. Prima di tutto dobbiamo ricordare che le operzini di sincronizzazione non sono bloccanti, quindi il master può continuare a gestire le query sottomesse mentre sincronizza lo slave o gli slave presenti (si, più slave possono far capo ad un singolo master).
+Bisogna sottolineare alcuni aspetti relativi al rapporto tra master e slave in Redis. Prima di tutto dobbiamo ricordare che le operazioni di sincronizzazione non sono bloccanti, quindi il master può continuare a gestire le query sottomesse mentre sincronizza lo slave o gli slave presenti (si, più slave possono far capo ad un singolo master).
 
+### MongoDB
 
+Mongo è un database non relazionale. I dati al suo interno non sono rappresentati usando tabelle ma file JSON. Il vantaggio principale è che questo modello mappa direttamente i nostri oggetti e fornisce una rappresentazione che è molto più leggibile e fedele alla natura dell'oggetto. Mongo è anche un'ottima scelta per quanto riguarda la scalabilità a causa del suo modello di sharding molto efficiente.
+
+## Elastic Search
+
+Elastic Search è un motore di ricerca utilizzato per indicizzare e cercare enormi quantità di dati. Costruito su Lucene si basa sul concetto di _index_ e _shard_ per ottimizzare le ricerche.
+Volendo fare un paragone con un database SQL abbiamo che:
+```
+MySQL => Databases => Tables => Columns/Rows
+Elasticsearch => Indices => Types => Documents with Properties
+```
+Vediamo che un indice è essenzialmente un database, all'interno di un indice sono racchiuse delle tipologie e, per ogni tipologia, abbiamo un documento che rappresenta una "riga" di un database relazionale.
+
+Volendo fare un esempio abbiamo che `SubaruFactory` è il nome dell'indice (il database), `People` e `Cars` rappresentano due tipologie (quindi sono le tabelle nel nostro db) e infine `SubaruImprezza` rappresenta una riga della tabella Cars (quindi è un documento).
+
+La query `$ curl -XGET localhost:9200/SubaruFactory/Cars/SubaruImprezza` può essere usata per selezionare il documento. Essenzialmente è una GET.
+
+Elastic mantiene i dati dentro uno shard che può essere uno shard `primario` o una `replica`. Le query sono sempre performate sulla partizione primaria e la replica è usata solo nel caso in cui la primaria sia inutilizzabile.
+
+Una cosa interessante degli indici è la flessibilità. Elastic è utilizzato ampiamente per i log, in questo caso si assegna un indice ad ogni giorno e si estraggono tutti i log per quel giorno. Sembra strano ma è un po' come avere una tabella per ogni giorno di log.
+
+La ricerca in questo caso è velocissima perché si effettua una binary search. Ovviamente questo potrebbe essere un problema qualora il numero degli indici crescesse troppo. Questa è una causa comune di crash in un cluster Elastic Search.
