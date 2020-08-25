@@ -56,7 +56,6 @@ Ovviamente una chiave esterna può essere duplicata, cosa che spesso accade. Ino
 Creando un vincolo saremo obbligati ad inserire valori di chiavi esterne solo se questi sono presenti nella tabella padre, in questo modo non potremmo avere chiavi esterne null. Questo vincolo è chiamato _integrità referenziale_. Se violiamo un vincolo di integrità referenziale avremo un errore, in questo modo il collegamento tra tabella padre e tabella figlia è obbligatorio.
 Un altro vantaggio dei vincoli riguarda l'eliminazione. Se elimino una riga ontenente una chiave primaria referenziata da una chiave esterna otterrò un errore. Per risolverlo dovrò _prima_ rimuovere la riga che referenzia la chiave primaria nella tabella figlia e _poi_ rimuovere la riga nella tabella padre.
 
-
 ### Operatori aggregati, group by e having
 
 Gli operatori aggregati sono utilizzati per effettuare operazioni matematiche comuni su un set di valori identificati da una colonna. 
@@ -272,7 +271,7 @@ Bisogna sottolineare alcuni aspetti relativi al rapporto tra master e slave in R
 
 Mongo è un database non relazionale. I dati al suo interno non sono rappresentati usando tabelle ma file JSON. Il vantaggio principale è che questo modello mappa direttamente i nostri oggetti e fornisce una rappresentazione che è molto più leggibile e fedele alla natura dell'oggetto. Mongo è anche un'ottima scelta per quanto riguarda la scalabilità a causa del suo modello di sharding molto efficiente.
 
-## Elastic Search
+### Elastic Search
 
 Elastic Search è un motore di ricerca utilizzato per indicizzare e cercare enormi quantità di dati. Costruito su Lucene si basa sul concetto di _index_ e _shard_ per ottimizzare le ricerche.
 Volendo fare un paragone con un database SQL abbiamo che:
@@ -291,3 +290,50 @@ Elastic mantiene i dati dentro uno shard che può essere uno shard `primario` o 
 Una cosa interessante degli indici è la flessibilità. Elastic è utilizzato ampiamente per i log, in questo caso si assegna un indice ad ogni giorno e si estraggono tutti i log per quel giorno. Sembra strano ma è un po' come avere una tabella per ogni giorno di log.
 
 La ricerca in questo caso è velocissima perché si effettua una binary search. Ovviamente questo potrebbe essere un problema qualora il numero degli indici crescesse troppo. Questa è una causa comune di crash in un cluster Elastic Search.
+
+## ACID
+
+In computer science, ACID (atomicity, consistency, isolation, durability) is a set of properties of database transactions intended to guarantee data validity despite errors, power failures, and so on.
+
+### Atomicity
+
+This property guarantees that each and every transaction is handled as a _single unit_ that can succeed or fail.
+
+In other worlds a transaction cannot be _partially_ applied.
+
+Atomicity is extremely important because we want to leave our database in a consistent state every time we execute an operation.
+
+### Consistency 
+
+This property ensures that a transaction bring a database from one consistent state to an other consistent state respecting all the rules (invariants) that we set for that database.
+
+### Isolation
+
+This guarantees that every transaction is executed in an isolated space. That means that a series of concurrent transactions leave the database in the same state that would have been reached if those transactions were executed sequentially.
+
+### Durability
+
+All the data on a database should be saved in a non volability memory in order to remain available even in case of system failure like a power outage.
+
+## Locking
+
+Record locking is the technique of preventing simultaneous access to data in a database, to prevent inconsistent results.
+
+The flow is pretty simple:
+ - actor A locks a row in the database
+ - actor A performs an transaction on this row (tipically a write)
+ - actor A release the lock
+
+While the row is locked no other actor can edit it (even if, depending on some database implementation could be possible for another actor to read the row).
+
+### Optimistic locking
+
+Optimistic Locking is a strategy where you read a record, take note of a version number (other methods to do this involve dates, timestamps or checksums/hashes) and check that the version hasn't changed before you write the record back. 
+
+When you write the record back you filter the update on the version to make sure it's atomic. (i.e. hasn't been updated between when you check the version and write the record to the disk) and update the version in one hit.
+
+If the record is dirty (i.e. different version to yours) you abort the transaction and the user can re-start it.
+
+### Pessimistic locking
+
+Pessimistic Locking is when you lock the record for your exclusive use until you have finished with it. It has much better integrity than optimistic locking but requires you to be careful with your application design to avoid Deadlocks. 
